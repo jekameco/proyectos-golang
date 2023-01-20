@@ -1,27 +1,33 @@
-{{ define "inicio"}}
-{{template "cabecera"}}
+{{ define "inicio"}} <!-- define la url -->
+{{template "cabecera"}} <!-- añade una parte de html de una vez sin necesidad de volver a escribirlo-->
 
 
 <a name="" id="" class="btn btn-primary" href="/crear" role="button">Agregar empleado</a>
       <table class="table">
         <thead>
             <tr>
-                <th>jenny</th>
-                <th>mesa</th>
-                <th>ayuda</th>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Acción</th>
             </tr>
         </thead>
         <tbody>
+
+            {{range.}}
             <tr>
-                <td scope="row">jenny</td>
-                <td>,esa</td>
-                <td>ayuda</td>
+                <!-- estos datos vienen de la estructura "type Empleado structure"  iniciar siempre con punto-->
+                <td>{{.Id}}</td>
+                <td>{{.Nombre}}</td> 
+                <td>{{.Correo}}</td>
+                <td>Editar
+                    <a name="update" id="update" class="btn btn-primary" href="/actualizar?id={{.Id}}" role="button">Actualizar</a>
+                    || 
+                    <a name="delete" id="delete" class="btn btn-danger" href="/borrar?id={{.Id}}" role="button">Borrar</a>
+                    Eliminar</td>
             </tr>
-            <tr>
-                <td scope="row">hekllp</td>
-                <td>jenny</td>
-                <td>mesa</td>
-            </tr>
+            {{end}}
+
         </tbody>
       </table>
   </body>
